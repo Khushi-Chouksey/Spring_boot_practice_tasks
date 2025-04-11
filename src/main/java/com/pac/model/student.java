@@ -15,7 +15,8 @@ public class student {
     // Constructors
     public student() {}
 
-    public student(String name, String email) {
+    public student(long id ,String name, String email) {
+       this.id = id;
         this.name = name;
         this.email = email;
     }

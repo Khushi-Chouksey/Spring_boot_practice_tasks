@@ -19,14 +19,21 @@ public class StudentController {
         return repo.save(student);
     }
 
-    @GetMapping
+    @PostMapping("/list")
+    public List<student> createStudent(@RequestBody List<student> students){
+        return repo.saveAll(students);
+    }
+
+    @GetMapping("/list")
     public List<student> getAll(){
+
         return repo.findAll();
     }
 
     @GetMapping("/{id}")
 
     public student getById(@PathVariable Long id){
+
         return repo.findById(id).orElse(null);
     }
 

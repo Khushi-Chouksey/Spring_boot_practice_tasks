@@ -1,4 +1,4 @@
-package com.pac;
+package com.pac.controller;
 
 
 import org.springframework.web.bind.annotation.GetMapping;

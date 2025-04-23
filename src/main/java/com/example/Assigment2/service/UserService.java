@@ -29,11 +29,21 @@ public class UserService {
     }
 
     public String verify(User user) {
-        Authentication authentication = authManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
-        if (authentication.isAuthenticated()) {
-            return jwtService.generateToken(user.getUsername());
-        } else {
-            return "fail";
+        System.out.println("here");
+        try {
+            Authentication authentication = authManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
+            if (authentication.isAuthenticated()) {
+                System.out.println("inside auth");
+
+                return jwtService.generateToken(user.getUsername());
+            } else {
+                System.out.println("inside faile");
+                return "fail";
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+         return "authentication failed: " + e.getMessage();
         }
     }
 
